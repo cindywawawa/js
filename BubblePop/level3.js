@@ -32,7 +32,7 @@ class level3 extends Phaser.Scene {
         this.anims.create({
             key:'gen-up',
             frames:this.anims.generateFrameNumbers('gen',
-            { start:0, end:4 }),
+            { start:0, end:3 }),
             frameRate:5,
             repeat:-1
         });
@@ -40,7 +40,7 @@ class level3 extends Phaser.Scene {
         this.anims.create({
             key:'gen-left',
             frames:this.anims.generateFrameNumbers('gen',
-            { start:5, end:8 }),
+            { start:4, end:7 }),
             frameRate:5,
             repeat:-1
         });
@@ -48,7 +48,7 @@ class level3 extends Phaser.Scene {
         this.anims.create({
             key:'gen-down',
             frames:this.anims.generateFrameNumbers('gen',
-            { start:9, end:12 }),
+            { start:8, end:11 }),
             frameRate:5,
             repeat:-1
         });
@@ -56,7 +56,7 @@ class level3 extends Phaser.Scene {
         this.anims.create({
             key:'gen-right',
             frames:this.anims.generateFrameNumbers('gen',
-            { start:13, end:16 }),
+            { start:12, end:15 }),
             frameRate:5,
             repeat:-1
         });
