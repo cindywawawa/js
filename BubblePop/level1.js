@@ -10,6 +10,10 @@ class level1 extends Phaser.Scene {
     // Step 2 : Preload any images here
     this.load.image("farmimg", "assets/farm.png");
     this.load.image("villageimg", "assets/village32x32.png");
+    this.load.image("treeimg", "assets/treepacknewest.png");
+    this.load.image("cowimg", "assets/31564.png");
+
+
     this.load.spritesheet("gen", "assets/girl2.png", {
       frameWidth: 61,
       frameHeight: 62,
@@ -17,31 +21,31 @@ class level1 extends Phaser.Scene {
   } // end of preload //
 
   create() {
-    console.log("animationScene");
+    console.log("level1");
     this.anims.create({
       key: "gen-up",
-      frames: this.anims.generateFrameNumbers("gen", { start: 0, end: 4 }),
+      frames: this.anims.generateFrameNumbers("gen", { start: 0, end: 3 }),
       frameRate: 5,
       repeat: -1,
     });
 
     this.anims.create({
       key: "gen-left",
-      frames: this.anims.generateFrameNumbers("gen", { start: 5, end: 8 }),
+      frames: this.anims.generateFrameNumbers("gen", { start: 4, end: 7 }),
       frameRate: 5,
       repeat: -1,
     });
 
     this.anims.create({
       key: "gen-down",
-      frames: this.anims.generateFrameNumbers("gen", { start: 9, end: 12 }),
+      frames: this.anims.generateFrameNumbers("gen", { start: 8, end: 11 }),
       frameRate: 5,
       repeat: -1,
     });
 
     this.anims.create({
       key: "gen-right",
-      frames: this.anims.generateFrameNumbers("gen", { start: 13, end: 16 }),
+      frames: this.anims.generateFrameNumbers("gen", { start: 12, end: 15 }),
       frameRate: 5,
       repeat: -1,
     });
@@ -54,9 +58,13 @@ class level1 extends Phaser.Scene {
     // 2nd parameter is key in Preload
     let farmTiles = map.addTilesetImage("farm", "farmimg");
     let villageTiles = map.addTilesetImage("village32x32", "villageimg");
+    let treeTiles = map.addTilesetImage("treepacknewest", "treeimg");
+    let cowTiles = map.addTilesetImage("31564", "cowimg");
+  
+
 
     //Step 5  create an array of tiles
-    let tilesArray = [farmTiles, villageTiles];
+    let tilesArray = [farmTiles, villageTiles, treeTiles, cowTiles];
 
     // Step 6  Load in layers by layers
 
@@ -73,6 +81,12 @@ class level1 extends Phaser.Scene {
     this.trees = map.createLayer("trees", tilesArray, 0, 0);
 
     this.house = map.createLayer("house", tilesArray, 0, 0);
+
+    this.tealeaf = map.createLayer("tealeaf", tilesArray, 0, 0);
+
+    this.cow = map.createLayer("cow", tilesArray, 0, 0);
+
+
 
     var key2Down = this.input.keyboard.addKey(50);
     key2Down.on(

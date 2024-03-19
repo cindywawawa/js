@@ -22,28 +22,28 @@ class level2 extends Phaser.Scene {
     console.log("level2");
     this.anims.create({
       key: "gen-up",
-      frames: this.anims.generateFrameNumbers("gen", { start: 0, end: 4 }),
+      frames: this.anims.generateFrameNumbers("gen", { start: 0, end: 3 }),
       frameRate: 5,
       repeat: -1,
     });
 
     this.anims.create({
       key: "gen-left",
-      frames: this.anims.generateFrameNumbers("gen", { start: 5, end: 8 }),
+      frames: this.anims.generateFrameNumbers("gen", { start: 4, end: 7 }),
       frameRate: 5,
       repeat: -1,
     });
 
     this.anims.create({
       key: "gen-down",
-      frames: this.anims.generateFrameNumbers("gen", { start: 9, end: 12 }),
+      frames: this.anims.generateFrameNumbers("gen", { start: 8, end: 11 }),
       frameRate: 5,
       repeat: -1,
     });
 
     this.anims.create({
       key: "gen-right",
-      frames: this.anims.generateFrameNumbers("gen", { start: 13, end: 16 }),
+      frames: this.anims.generateFrameNumbers("gen", { start: 12, end: 15 }),
       frameRate: 5,
       repeat: -1,
     });
@@ -117,10 +117,10 @@ class level2 extends Phaser.Scene {
   update() {
     // In update()
     if (
-      this.player.x > 322 &&
-      this.player.x < 345 &&
-      this.player.y < 1085 &&
-      this.player.y > 975
+      this.player.x > 480 &&
+      this.player.x < 530 &&
+      this.player.y < 597
+      
     ) {
       console.log("House2");
       this.house2();
@@ -152,7 +152,7 @@ class level2 extends Phaser.Scene {
 
   // Function to jump to room1
   house2(player, tile) {
-    console.log("room1 function");
+    console.log("house2 function");
     this.scene.start("level3");
   }
 }
