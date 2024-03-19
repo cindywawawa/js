@@ -19,3 +19,4 @@ let config = {
 };
 
 let game = new Phaser.Game(config);
+window.cow=0
