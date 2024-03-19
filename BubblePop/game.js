@@ -10,7 +10,11 @@ let config = {
         }
     },
     backgroundColor: '#000000',
-    scene: [ level1, level2, level3 ]
+    scene: [ level1, level2, level3],
+    scale: {
+        mode: Phaser.Scale.FIT,
+        autoCenter: Phaser.Scale.CENTER_BOTH
+      },
 
 };
 
