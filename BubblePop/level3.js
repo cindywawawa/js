@@ -20,7 +20,9 @@ class level3 extends Phaser.Scene {
         this.load.image("tableimg", "assets/gather_tables_2.1.png");
 
         this.load.image("ufmimg", "assets/ufMP1I.png");
-        this.load.image("teaimg", "assets/bubbletea.png");
+        this.load.image("teaimg", "assets/bubbletea.png")
+        
+
 
         this.load.spritesheet('gen', 'assets/girl2.png',{ frameWidth:61, frameHeight:62 });
 
@@ -125,6 +127,8 @@ class level3 extends Phaser.Scene {
     // create the arrow keys
     this.cursors = this.input.keyboard.createCursorKeys();
 
+   
+
     this.wall.setCollisionByExclusion(-1, true);
     this.table.setCollisionByExclusion(-1, true);
     this.light.setCollisionByExclusion(-1, true);
@@ -133,6 +137,9 @@ class level3 extends Phaser.Scene {
     this.physics.add.collider(this.player, this.wall);
     this.physics.add.collider(this.player, this.table);
     this.physics.add.collider(this.player, this.light);
+
+    window.tea > 4
+
 
     let tea1 = map.findObject("ObjectLayer2", (obj) => obj.name === "tea1");
     let tea2 = map.findObject("ObjectLayer2", (obj) => obj.name === "tea2");
@@ -150,7 +157,7 @@ class level3 extends Phaser.Scene {
     // // camera follow player
     this.cameras.main.startFollow(this.player);
 
-
+ this.physics.add.overlap(this.player, [this.tea1,this.tea2, this.tea3,this.tea4,this.tea5] ,this.collecttea, null, this);
 }
 update() {
     if (this.cursors.left.isDown)

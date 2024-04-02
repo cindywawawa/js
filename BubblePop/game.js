@@ -21,3 +21,4 @@ let config = {
 let game = new Phaser.Game(config);
 window.cow=0
 window.leaf=0;
+window.tea=0

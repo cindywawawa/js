@@ -19,10 +19,7 @@ class level1 extends Phaser.Scene {
  
 
 
-    this.load.spritesheet("gen", "assets/girl2.png", {
-      frameWidth: 61,
-      frameHeight: 62,
-    });
+    this.load.spritesheet("gen", "assets/girl2.png", {frameWidth: 61, frameHeight: 62, });
   } // end of preload //
 
   create() {

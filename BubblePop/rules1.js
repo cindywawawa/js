@@ -19,8 +19,8 @@ class rules1 extends Phaser.Scene {
         var spaceDown = this.input.keyboard.addKey('SPACE');
 
         spaceDown.on('down', function(){
-            console.log("Spacebar pressed, goto level");
-            this.scene.start("level");
+            console.log("Spacebar pressed, goto level1");
+            this.scene.start("level1");
             }, this );
 
        

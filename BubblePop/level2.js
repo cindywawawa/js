@@ -13,7 +13,7 @@ class level2 extends Phaser.Scene {
     this.load.image("villageimg", "assets/village32x32.png");
 
     this.load.spritesheet("gen", "assets/girl2.png", {frameWidth: 61,frameHeight: 62, });
-    this.load.spritesheet("terrainimg", "assets/terrain.png", {frameWidth: 33,frameHeight: 31, });
+    this.load.spritesheet("terrainimg", "assets/terrain.png", {frameWidth: 53,frameHeight: 50, });
 
   } // end of preload //
 
@@ -119,9 +119,9 @@ class level2 extends Phaser.Scene {
     this.physics.add.collider(this.player, this.brown);
     this.physics.add.collider(this.player, this.trees);
 
-    let hole1 = map.findObject("ObjectLayer2", (obj) => obj.name === "hole1");
+    let terrain1 = map.findObject("ObjectLayer2", (obj) => obj.name === "terrain1");
 
-    this.hole1 = this.physics.add.sprite(hole1.x, hole1.y, "holeimg")
+    this.terrain1 = this.physics.add.sprite(terrain1.x, terrain1.y, "terrainimg")
 
 
     this.tweens.add({
@@ -150,12 +150,12 @@ class level2 extends Phaser.Scene {
   update() {
     // In update()
     if (
-      this.player.x > 458 &&
-      this.player.x < 567 &&
-      this.player.y < 645 &&
-      this.player.y < 581
+      this.player.x > 493 &&
       
-      && window.leaf > 5
+      this.player.y > 589 
+      
+      
+     
 
     ) {
       console.log("House2");
@@ -184,14 +184,7 @@ class level2 extends Phaser.Scene {
     }
   }
 
-  collecttea(player, item) { 
-    console.log("collecttea");
-    this.cameras.main.shake(10);
-    window.tea++
-    console.log(window.tea)
-    item.disableBody(true, true); // remove fire
-    return false;
-  }
+  
   // outside of update() but within the class
 
   // Function to jump to room1
