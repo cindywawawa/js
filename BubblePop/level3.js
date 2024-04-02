@@ -20,6 +20,8 @@ class level3 extends Phaser.Scene {
         this.load.image("tableimg", "assets/gather_tables_2.1.png");
 
         this.load.image("ufmimg", "assets/ufMP1I.png");
+        this.load.image("teaimg", "assets/bubbletea.png");
+
         this.load.spritesheet('gen', 'assets/girl2.png',{ frameWidth:61, frameHeight:62 });
 
 
@@ -132,6 +134,17 @@ class level3 extends Phaser.Scene {
     this.physics.add.collider(this.player, this.table);
     this.physics.add.collider(this.player, this.light);
 
+    let tea1 = map.findObject("ObjectLayer2", (obj) => obj.name === "tea1");
+    let tea2 = map.findObject("ObjectLayer2", (obj) => obj.name === "tea2");
+    let tea3 = map.findObject("ObjectLayer2", (obj) => obj.name === "tea3");
+    let tea4 = map.findObject("ObjectLayer2", (obj) => obj.name === "tea4");
+    let tea5 = map.findObject("ObjectLayer2", (obj) => obj.name === "tea5");
+
+    this.tea1 = this.physics.add.sprite(tea1.x, tea1.y, "teaimg")
+    this.tea2 = this.physics.add.sprite(tea2.x, tea2.y, "teaimg")
+    this.tea3 = this.physics.add.sprite(tea3.x, tea3.y, "teaimg")
+    this.tea4 = this.physics.add.sprite(tea4.x, tea4.y, "teaimg")
+    this.tea5 = this.physics.add.sprite(tea5.x, tea5.y, "teaimg")
 
     
     // // camera follow player
@@ -163,7 +176,19 @@ update() {
 
         this.player.body.setSize(this.player.width * 0.1, this.player.height * 0.3)
     }
-
-  }
-
 }
+
+
+
+    collecttea(player, item) {
+        console.log("collecttea");
+        this.cameras.main.shake(10);
+        window.tea++
+        console.log(window.tea)
+        item.disableBody(true, true); // remove fire
+        return false;
+      }
+    
+     
+      }
+    

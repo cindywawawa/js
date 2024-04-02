@@ -12,10 +12,9 @@ class level2 extends Phaser.Scene {
     this.load.image("freeimg", "assets/Free Sprites 2x.png");
     this.load.image("villageimg", "assets/village32x32.png");
 
-    this.load.spritesheet("gen", "assets/girl2.png", {
-      frameWidth: 61,
-      frameHeight: 62,
-    });
+    this.load.spritesheet("gen", "assets/girl2.png", {frameWidth: 61,frameHeight: 62, });
+    this.load.spritesheet("terrainimg", "assets/terrain.png", {frameWidth: 33,frameHeight: 31, });
+
   } // end of preload //
 
   create() {
@@ -46,6 +45,13 @@ class level2 extends Phaser.Scene {
       frames: this.anims.generateFrameNumbers("gen", { start: 12, end: 15 }),
       frameRate: 5,
       repeat: -1,
+    });
+
+    this.anims.create({
+      key: 'terrain1Anim', // Unique identifier for the animation
+      frames: this.anims.generateFrameNumbers('terrainimg', { start: 0, end: 2 }), // Frame numbers or array of frame numbers
+      frameRate: 2, // Number of frames per second
+      repeat: -1 // -1 for infinite loop, or set to a positive integer for a finite loop
     });
 
     //Step 3 - Create the map from main
@@ -84,7 +90,6 @@ class level2 extends Phaser.Scene {
 
     this.animals = map.createLayer("animals", tilesArray, 0, 0);
 
-    this.hole = map.createLayer("hole", tilesArray, 0, 0);
 
     var key3Down = this.input.keyboard.addKey(51);
     key3Down.on(
@@ -107,9 +112,37 @@ class level2 extends Phaser.Scene {
 
     this.block.setCollisionByExclusion(-1, true);
     this.brown.setCollisionByExclusion(-1, true);
+    this.trees.setCollisionByExclusion(-1, true);
+
 
     this.physics.add.collider(this.player, this.block);
     this.physics.add.collider(this.player, this.brown);
+    this.physics.add.collider(this.player, this.trees);
+
+    let hole1 = map.findObject("ObjectLayer2", (obj) => obj.name === "hole1");
+
+    this.hole1 = this.physics.add.sprite(hole1.x, hole1.y, "holeimg")
+
+
+    this.tweens.add({
+      targets: this.terrain1,
+      x: 100,
+      flipY: false,
+      yoyo: true,
+      duration: 4000,
+      repeat: -1,
+
+      // onYoyo: () => {
+      //     console.log('onYoyo');
+      //     this.hole1.play ("hole1Anim")
+        
+      // },
+      // onRepeat: () => {
+      //     console.log('onRepeat');
+      //     this.enemy1.play ("hole1Anim")
+      // },
+  })
+  
 
     // // camera follow player
     this.cameras.main.startFollow(this.player);
@@ -117,10 +150,13 @@ class level2 extends Phaser.Scene {
   update() {
     // In update()
     if (
-      this.player.x > 480 &&
-      this.player.x < 530 &&
-      this.player.y < 597
+      this.player.x > 458 &&
+      this.player.x < 567 &&
+      this.player.y < 645 &&
+      this.player.y < 581
       
+      && window.leaf > 5
+
     ) {
       console.log("House2");
       this.house2();
@@ -148,6 +184,14 @@ class level2 extends Phaser.Scene {
     }
   }
 
+  collecttea(player, item) { 
+    console.log("collecttea");
+    this.cameras.main.shake(10);
+    window.tea++
+    console.log(window.tea)
+    item.disableBody(true, true); // remove fire
+    return false;
+  }
   // outside of update() but within the class
 
   // Function to jump to room1

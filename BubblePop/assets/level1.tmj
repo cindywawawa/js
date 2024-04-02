@@ -256,7 +256,7 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":177.333333333333,
+                 "x":177.333,
                  "y":368
                 }, 
                 {
@@ -268,8 +268,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":109.333333333333,
-                 "y":429.333333333333
+                 "x":109.333,
+                 "y":429.333
                 }, 
                 {
                  "height":0,
@@ -280,8 +280,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":273.333333333333,
-                 "y":425.333333333333
+                 "x":273.333,
+                 "y":425.333
                 }, 
                 {
                  "height":0,
@@ -293,7 +293,7 @@
                  "visible":true,
                  "width":0,
                  "x":116,
-                 "y":178.666666666667
+                 "y":178.667
                 }, 
                 {
                  "height":0,
@@ -304,7 +304,7 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":461.333333333333,
+                 "x":461.333,
                  "y":120
                 }, 
                 {
@@ -316,8 +316,91 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":909.333333333333,
-                 "y":442.666666666667
+                 "x":909.333,
+                 "y":442.667
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":17,
+         "name":"ObjectLayer3",
+         "objects":[
+                {
+                 "height":0,
+                 "id":11,
+                 "name":"leaf1",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":718.667,
+                 "y":112
+                }, 
+                {
+                 "height":0,
+                 "id":12,
+                 "name":"leaf2",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":845.333,
+                 "y":144
+                }, 
+                {
+                 "height":0,
+                 "id":13,
+                 "name":"leaf3",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":658.667,
+                 "y":265.333
+                }, 
+                {
+                 "height":0,
+                 "id":14,
+                 "name":"leaf4",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":594.667,
+                 "y":380
+                }, 
+                {
+                 "height":0,
+                 "id":15,
+                 "name":"leaf5",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":192,
+                 "y":452
+                }, 
+                {
+                 "height":0,
+                 "id":16,
+                 "name":"leaf6",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":209.333,
+                 "y":240
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -325,8 +408,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":17,
- "nextobjectid":11,
+ "nextlayerid":19,
+ "nextobjectid":17,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",
@@ -380,7 +463,7 @@
          "margin":0,
          "name":"31564",
          "spacing":0,
-         "tilecount":228,
+         "tilecount":0,
          "tileheight":32,
          "tilewidth":32
         }],

@@ -12,8 +12,10 @@ class level1 extends Phaser.Scene {
     this.load.image("villageimg", "assets/village32x32.png");
     this.load.image("treeimg", "assets/treepacknewest.png");
     this.load.image("cowimg", "assets/31564.png");
+    this.load.image("leafimg", "assets/leaf.png");
 
-    this.load.audio("bgmusic", "assets/mixkit-playground-fun-12 (1).mp3");
+   
+   
  
 
 
@@ -24,9 +26,8 @@ class level1 extends Phaser.Scene {
   } // end of preload //
 
   create() {
-
-    this.music = this.sound.add("bgmusic",{loop: true}).setVolume(0.3);
-this.music.play();
+    
+   
 
     console.log("level1");
     this.anims.create({
@@ -92,6 +93,7 @@ this.music.play();
 
     this.cow = map.createLayer("cow", tilesArray, 0, 0);
 
+
     let cow1 = map.findObject("ObjectLayer2", (obj) => obj.name === "cow1");
     let cow2 = map.findObject("ObjectLayer2", (obj) => obj.name === "cow2");
     let cow3 = map.findObject("ObjectLayer2", (obj) => obj.name === "cow3");
@@ -105,6 +107,21 @@ this.music.play();
     this.cow4 = this.physics.add.sprite(cow4.x, cow4.y, "cowimg")
     this.cow5 = this.physics.add.sprite(cow5.x, cow5.y, "cowimg")
     this.cow6 = this.physics.add.sprite(cow6.x, cow6.y, "cowimg")
+
+    let leaf1 = map.findObject("ObjectLayer3", (obj) => obj.name === "leaf1");
+    let leaf2 = map.findObject("ObjectLayer3", (obj) => obj.name === "leaf2");
+    let leaf3 = map.findObject("ObjectLayer3", (obj) => obj.name === "leaf3");
+    let leaf4 = map.findObject("ObjectLayer3", (obj) => obj.name === "leaf4");
+    let leaf5 = map.findObject("ObjectLayer3", (obj) => obj.name === "leaf5");
+    let leaf6 = map.findObject("ObjectLayer3", (obj) => obj.name === "leaf6");
+
+    this.leaf1 = this.physics.add.sprite(leaf1.x, leaf1.y, "leafimg")
+    this.leaf2 = this.physics.add.sprite(leaf2.x, leaf2.y, "leafimg")
+    this.leaf3 = this.physics.add.sprite(leaf3.x, leaf3.y, "leafimg")
+    this.leaf4 = this.physics.add.sprite(leaf4.x, leaf4.y, "leafimg")
+    this.leaf5 = this.physics.add.sprite(leaf5.x, leaf5.y, "leafimg")
+    this.leaf6 = this.physics.add.sprite(leaf6.x, leaf6.y, "leafimg")
+
 
 
     var key2Down = this.input.keyboard.addKey(50);
@@ -127,7 +144,10 @@ this.music.play();
 
     // // camera follow player
     this.cameras.main.startFollow(this.player);
-    this.physics.add.overlap(this.player, [this.cow1,this.cow2, this.cow3,this.cow,this.cow5,this.cow6] ,this.collectcow, null, this);
+    this.physics.add.overlap(this.player, [this.cow1,this.cow2, this.cow3,this.cow4,this.cow5,this.cow6] ,this.collectcow, null, this);
+
+    this.physics.add.overlap(this.player, [this.leaf1,this.leaf2, this.leaf3,this.leaf4,this.leaf5,this.leaf6] ,this.collectleaf, null, this);
+
 
   
   
@@ -145,9 +165,12 @@ this.music.play();
       this.player.x > 154 &&
       this.player.x < 190 &&
       this.player.y < 140 &&
-      this.player.y > 100 &&
+      this.player.y > 100 
 
-      window.cow > 5
+      && window.cow > 5
+
+      && window.leaf > 5
+
     ) {
       console.log("House1");
       this.house1();
@@ -183,9 +206,18 @@ this.music.play();
 
   collectcow(player, item) { 
     console.log("collectcow");
-    this.cameras.main.shake(20);
+    this.cameras.main.shake(10);
     window.cow++
     console.log(window.cow)
+    item.disableBody(true, true); // remove fire
+    return false;
+  }
+
+  collectleaf(player, item) { 
+    console.log("collectleaf");
+    this.cameras.main.shake(10);
+    window.leaf++
+    console.log(window.leaf)
     item.disableBody(true, true); // remove fire
     return false;
   }
