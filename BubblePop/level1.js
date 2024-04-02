@@ -14,19 +14,19 @@ class level1 extends Phaser.Scene {
     this.load.image("cowimg", "assets/31564.png");
     this.load.image("leafimg", "assets/leaf.png");
 
-   
-   
- 
-
-
     this.load.spritesheet("gen", "assets/girl2.png", {frameWidth: 61, frameHeight: 62, });
+
+    this.load.audio("collect", "assets/collect.wav");
   } // end of preload //
 
   create() {
-    
+    console.log("cowimg:", window.cow);
+    console.log("leafimg:", window.leaf);
    
 
     console.log("level1");
+    this.collectSnd = this.sound.add("collect");
+
     this.anims.create({
       key: "gen-up",
       frames: this.anims.generateFrameNumbers("gen", { start: 0, end: 3 }),
@@ -203,18 +203,20 @@ class level1 extends Phaser.Scene {
 
   collectcow(player, item) { 
     console.log("collectcow");
-    this.cameras.main.shake(10);
+    this.cameras.main.shake(5);
     window.cow++
     console.log(window.cow)
+    this.collectSnd.play()
     item.disableBody(true, true); // remove fire
     return false;
   }
 
   collectleaf(player, item) { 
     console.log("collectleaf");
-    this.cameras.main.shake(10);
+    this.cameras.main.shake(5);
     window.leaf++
     console.log(window.leaf)
+    this.collectSnd.play()
     item.disableBody(true, true); // remove fire
     return false;
   }

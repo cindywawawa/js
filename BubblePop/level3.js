@@ -26,13 +26,20 @@ class level3 extends Phaser.Scene {
 
         this.load.spritesheet('gen', 'assets/girl2.png',{ frameWidth:61, frameHeight:62 });
 
+        this.load.audio("collect", "assets/collect.wav");
+
+
 
        
     } // end of preload //
 
     create (){
+        console.log("teaimg:", window.tea);
+
 
         console.log("level3")
+        this.collectSnd = this.sound.add("collect");
+
         this.anims.create({
             key:'gen-up',
             frames:this.anims.generateFrameNumbers('gen',
@@ -192,6 +199,7 @@ update() {
         this.cameras.main.shake(10);
         window.tea++
         console.log(window.tea)
+        this.collectSnd.play()
         item.disableBody(true, true); // remove fire
         return false;
       }
